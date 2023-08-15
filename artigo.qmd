@@ -1,0 +1,86 @@
+---
+title: "Trabalho de Lego II"
+date: "16/08/2023"
+author:
+  - name: Fulana de Tal
+    email: fulana@iesp.uerj.br
+abstract: > 
+  Este é um exemplo de trabalho para a disciplina de Lego II. Ele deverá ser usado
+  por padrão nos trabalhos da disciplina, incluso o trabalho final. É possível inserir
+  tabelas e gráficos nele por meio de código, e a bibliografia é gerenciada automaticamente.
+  Obviamente, este exemplo pode ser adaptado de inúmeras formas. Para usar o template,
+  é necessário ter o quarto instalado, além do \LaTeX. Veremos como fazer isso ao longo do curso.
+format:
+  pdf:
+    toc: false
+    number-sections: false
+    colorlinks: true
+    fig-pos: 'ht'
+    geometry:
+      - top=25mm
+      - left=20mm
+      - right=20mm
+      - bottom=25mm
+bibliography: referencias.bib
+lang: pt
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+
+# Pacotes
+library(modelsummary)
+library(tidyverse)
+```
+
+
+# Introdução
+
+Aqui vai a introdução do documento. Podemos citar um texto de @ross2001does nominalmente, ou citar ele indiretamente [@ross2001does]. Podemos citar mais de um texto indiretamente [@gerber2012field; @goertz2012tale]. A bibliografia é formatada automaticamente no final do documento.
+
+
+# Metodologia
+
+Aqui vai uma descrição do desenho de pesquisa. Podemos usar notação (via \LaTeX):
+
+$$
+Y_i = \alpha_i + \beta X_i + \epsilon_i
+$$
+Também podemos usar notação no meio do texto, como quando queremos falar de uma unidade $i$, ou de uma variável aleatória $Y$, ou ainda de uma estimativa $\hat{\beta}$.
+
+
+# Resultados
+
+Finalmente, aqui vai o @fig-mtcars (feito com [ggplot2](https://ggplot2.tidyverse.org/)). O gráfico aparece com título e pode ser citado no texto, como na linha anterior.
+
+```{r}
+#| label: fig-mtcars
+#| fig-cap: "Título do gráfico"
+mtcars %>%
+  ggplot(aes(x = cyl, y = mpg)) +
+  geom_point() +
+  theme_minimal()
+```
+
+
+E aqui vão resultados de modelos de regressão na @tbl-mtcars (usando o pacote [modelsummary](https://vincentarelbundock.github.io/modelsummary/articles/modelsummary.html)). As tabelas já saem formatadas e é possível customizar várias outras opções de exibição.
+
+```{r}
+#| label: tbl-mtcars
+#| tbl-cap: "Modelos de regressão"
+modelos <- list(
+  "Modelo 1" = lm(mpg ~ cyl, data = mtcars),
+  "Modelo 2" = lm(mpg ~ cyl + hp, data = mtcars)
+)
+
+modelsummary(modelos, gof_map = c("nobs", "r.squared"))
+```
+
+
+
+
+### Referências
+
+::: {#refs}
+:::
+
