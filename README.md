@@ -1,4 +1,4 @@
-# Template de trabalhos para Lego II
+# Template de trabalhos para Lego
 
 O arquivo [artigo.qmd](artigo.qmd) é um *template* de documento acadêmico usando [quarto](https://quarto.org/). Diferentemente de um arquivo de *Word*,este pode ser editado em qualquer editor de texto usando [Markdown](https://www.markdownguide.org/basic-syntax/). Entre outras vantagens, ele dispensa termos de formatar o documento final; de inserir bibligrafia manualmente; e de ter de copiar e colar resultados de análises feitas no `R`.
 
